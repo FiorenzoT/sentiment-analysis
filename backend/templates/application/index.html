@@ -3,14 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Sentiment Analysis</title>
 </head>
 <body>
     <h1>Sentiment Analysis</h1>
-    <form method="POST">
+
+    <form id="sentimentForm" method="POST">
         {% csrf_token %}
-        <textarea name="text" rows="6" cols="50" placeholder="Insert your text here..."></textarea><br>
+        <textarea id="text" name="text" rows="6" cols="50" placeholder="Insert your text here..."></textarea><br><br>
         <button type="submit">Analyze</button>
-    </form>    
+    </form>
+
+    <div id="result">
+        <h2>Result will be displayed here</h2>
+    </div>
+
+    <script>
+        $('#sentimentForm').on('submit', function(event) {
+            event.preventDefault(); // No page reload
+    
+            let inputText = $('#text').val();
+    
+            $.ajax({
+                url: '/application/',  // Django views
+                type: 'POST',
+                data: {
+                    'text': inputText,
+                    'csrfmiddlewaretoken': '{{ csrf_token }}' // CSRF Token
+                },
+                success: function(response) {
+                    $('#result').html(`
+                        <h2>Sentiment Analysis Result</h2>
+                        <p><strong>Analyzed Text:</strong> ${response.text}</p>
+                        <p><strong>Sentiment:</strong> ${response.sentiment}</p>
+                        <p><strong>Sentiment Polarity:</strong> ${response.popolarity}</p>
+                    `);
+                },
+                error: function(xhr, errmsg, err) {
+                    $('#result').html(`<p>There was an error: ${errmsg}</p>`);
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>

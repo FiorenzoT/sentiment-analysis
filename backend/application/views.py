@@ -10,6 +10,10 @@ def sentiment_analysis(request):
     if request.method == 'POST':
         input = request.POST.get('text')
 
+        if input is None:
+            return JsonResponse({'error': 'No text provided'}, status=400)
+
+
         # Analyze the input
         blob = TextBlob(input)
         sentiment_polarity = blob.sentiment.polarity
@@ -21,10 +25,10 @@ def sentiment_analysis(request):
         else:
             sentiment = 'Neutral'
     
-        return render(request, 'application/result.html', {
+        return JsonResponse({
+            'text': input,
             'sentiment': sentiment,
-            'popolarity': sentiment_polarity,
-            'text': input
+            'popolarity': sentiment_polarity
         })
     
     return render(request, 'application/index.html')

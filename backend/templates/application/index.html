@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+{%load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Sentiment Analysis</title>
 </head>
 <body>
@@ -34,7 +36,7 @@
                 },
                 success: function(response) {
                     $('#result').html(`
-                        <h2>Sentiment Analysis Result</h2>
+                        <h2>Sentiment Analysis Result</h2><br>
                         <p><strong>Analyzed Text:</strong> ${response.text}</p>
                         <p><strong>Sentiment:</strong> ${response.sentiment}</p>
                         <p><strong>Sentiment Polarity:</strong> ${response.popolarity}</p>

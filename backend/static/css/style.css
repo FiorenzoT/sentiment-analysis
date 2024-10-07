@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    font-size: 1rem;
+    background-color: whitesmoke;
+}
+
+div {
+    min-height: 20vh;
+    display: grid;
+    place-content: center;
+}
+
+h1, p {
+    text-align: center;
+}
+
+#sentimentForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    margin-bottom: 2rem;
+}

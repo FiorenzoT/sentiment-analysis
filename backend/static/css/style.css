@@ -33,3 +33,57 @@ button {
     padding: 0.5rem 1rem;
     margin-bottom: 2rem;
 }
+
+.link-button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.history-button:hover {
+    background-color: #0056b3;
+}
+
+/* Style for History page */
+
+table {
+    max-width: 50rem;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+th, td {
+    padding: 12px;
+    min-width: 8rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+td {
+    word-wrap: break-word;
+}

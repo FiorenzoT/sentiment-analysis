@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Sentiment Analysis - History</title>
+</head>
+<body>
+
+    <a href="{% url 'sentiment_analysis' %}" class="link-button">Go back</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th class="text-column">Text</th>
+                <th>Sentiment</th>
+                <th>Polarity</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for analysis in analyses %}
+            <tr>
+                <td class="text-column">{{ analysis.input_text }}</td>
+                <td>{{ analysis.sentiment }}</td>
+                <td>{{ analysis.polarity|floatformat:4 }}</td>
+                <td>{{ analysis.created_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

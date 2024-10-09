@@ -29,15 +29,17 @@
     
             let inputText = $('#text').val();
     
+            // Make an AJAX POST request to submit the form data asynchronously
             $.ajax({
-                url: '',  // Django views
+                url: '',  // URL for Django views
                 type: 'POST',
                 data: {
                     'text': inputText,
-                    'csrfmiddlewaretoken': '{{ csrf_token }}' // CSRF Token
+                    'csrfmiddlewaretoken': '{{ csrf_token }}'
                 },
                 success: function(response) {
 
+                    // If the text length exceeds 40 characters, shorten it and append '...'
                     if (response.text.length > 40) {
                         analyzedText = response.text.substring(0, 40) + '...';
                     } else {

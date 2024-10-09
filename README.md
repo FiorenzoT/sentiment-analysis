@@ -29,10 +29,7 @@ This project is a sentiment analysis web application built using Django and a se
     docker-compose up --build
     ``
 
-5. **Access the web app by navigating to**:
-    ``
-    http://localhost:8081
-    ``
+5. **Access the web app by navigating to**: [http://localhost:8081](http://localhost:8081)
 
 ## Usage
 
